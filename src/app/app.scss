@@ -1,0 +1,169 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+// Fix Android scrollbar issue
+.scroll-content {
+  overflow-y: auto;
+}
+
+// Custom fonts
+@font-face {
+	font-family: 'Hiruko Pro';
+	src: url('../assets/fonts/HirukoPro-Black.eot');
+	src: url('../assets/fonts/HirukoPro-Black.eot?#iefix') format('embedded-opentype'),
+		url('../assets/fonts/HirukoPro-Black.woff') format('woff'),
+		url('../assets/fonts/HirukoPro-Black.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*.header .toolbar-title,*/
+.primary-font {
+	font-family: 'Hiruko Pro';
+}
+
+/*.header .toolbar-title {
+  font-size: 2.3rem;
+  position: relative;
+  top: 2px;
+}*/
+
+.text-xl {
+  font-size: 4.8em !important;
+}
+
+.text-xxl {
+  font-size: 7em !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.dark {
+  color: #333;
+}
+
+.light {
+  color: #fff;
+}
+
+ion-nav {
+  ion-content {
+    background-image:url(../assets/images/full-screen/background.png);
+    background-size: cover;
+  }
+}
+
+.list-md {
+  .item-md,
+  ion-list-header,
+  ion-item-sliding {
+    background: transparent !important;
+  }
+}
+
+// Transparent header
+.transparent {
+  background-color: transparent;
+
+  &::after {
+    background-image: none !important;
+  }
+
+  button,
+  .toolbar-title {
+    color: #000;
+  }
+
+  &.light {
+    button,
+    .toolbar-title {
+      color: #fff;
+    }
+  }
+
+  .toolbar-background {
+    border: 0px !important;
+    border-bottom-color: transparent !important;
+    background-image: none !important;
+    border-bottom: none !important;
+  }
+
+  .toolbar-background {
+    background-color: transparent;
+  }
+}
+
+// Remove top padding for fullscreen
+.fullscreen {
+  .scroll-content {
+	   padding-top: 0 !important;
+   }
+}
+
+// Side menu
+.menu-inner {
+  background-color: #000 !important;
+  background-image:url(../assets/images/full-screen/side-nav.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+
+  .list-md {
+    margin-left: 10px !important;
+  }
+
+  .content {
+    background-color: rgba(0, 0, 0, 0) !important;
+
+    .logo-container {
+      text-align: center;
+
+      .logo {
+        height: 80px;
+        margin: 3.5em 0 2em 0;
+      }
+    }
+
+    .item-block {
+      color: #fff;
+      font-family: 'Hiruko Pro';
+      font-size: 2.3rem;
+      border: 0 !important;
+      background-color: transparent;
+
+      .item-inner {
+        border: 0 !important;
+        margin-left: 6px !important;
+        background-image: none !important;
+
+        .label {
+          position: relative;
+          top: 1px;
+        }
+
+        ion-icon {
+          position: relative;
+          top: 3px;
+        }
+
+      }
+    }
+
+  }
+}

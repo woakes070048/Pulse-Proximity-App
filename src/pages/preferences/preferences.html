@@ -1,0 +1,125 @@
+<ion-header class="transparent" no-border-bottom>
+
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'PREFERENCES' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content fullscreen>
+
+  <div padding>
+
+    <ion-segment [(ngModel)]="preferences_tab">
+      <ion-segment-button value="general">
+        {{ 'GENERAL' | translate }}
+      </ion-segment-button>
+      <ion-segment-button value="profile">
+        {{ 'PROFILE' | translate }}
+      </ion-segment-button>
+      <ion-segment-button value="interests">
+        {{ 'INTERESTS' | translate }}
+      </ion-segment-button>
+    </ion-segment>
+
+  </div>
+
+  <div [ngSwitch]="preferences_tab">
+
+    <div *ngSwitchCase="'general'">
+
+      <ion-row>
+        <ion-col class="text-center">
+          <ion-icon class="text-xxl" name="contact" style="color:#ccc"></ion-icon>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="padding-top:0">
+          <ion-list inset style="margin-top:0">
+
+            <ion-item>
+              <ion-label floating>{{ 'FIRST_NAME' | translate }}</ion-label>
+              <ion-input type="text" [(ngModel)]="preferences.first_name" (input)="updatePreferences()"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>{{ 'LAST_NAME' | translate }}</ion-label>
+              <ion-input type="text" [(ngModel)]="preferences.last_name" (input)="updatePreferences()"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>{{ 'EMAIL_ADDRESS' | translate }}</ion-label>
+              <ion-input type="text" [(ngModel)]="preferences.email" (input)="updatePreferences()"></ion-input>
+            </ion-item>
+
+            <ion-list-header>
+            </ion-list-header>
+
+          </ion-list>
+
+          <div style="text-align: center">
+            <button color="dark" ion-button center clear round small (click)="showPrivacyPopover($event)">{{ 'PRIVACY_POLICY' | translate }}</button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+
+    </div>
+
+    <div *ngSwitchCase="'profile'">
+
+      <ion-list inset radio-group no-lines [(ngModel)]="preferences.gender" (ionChange)="updatePreferences()">
+        <ion-item>
+          <ion-label>{{ 'GENDER' | translate }}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="man" item-left></ion-icon>
+          <ion-label>{{ 'MALE' | translate }}</ion-label>
+          <ion-radio value="male"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="woman" item-left></ion-icon>
+          <ion-label>{{ 'FEMALE' | translate }}</ion-label>
+          <ion-radio value="female"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <ion-list inset>
+        <ion-item>
+          <ion-label>{{ 'BIRTHDAY' | translate }}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="calendar" item-left></ion-icon>
+          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="preferences.birthday" (ionChange)="updatePreferences()"></ion-datetime>
+        </ion-item>
+      </ion-list>
+
+    </div>
+
+    <div *ngSwitchCase="'interests'">
+<!--
+      <ion-list inset no-lines *ngIf="categories_loading === true">
+        <ion-list-header>
+          Loading...
+        </ion-list-header>
+      </ion-list>
+-->
+      <ion-list inset no-lines>
+        <ion-item *ngFor="let category of categories">
+          <ion-icon name="{{ category.icon }}" item-left></ion-icon>
+          <ion-label><div [innerHTML]="category.trans.en"></div></ion-label>
+          <ion-toggle color="secondary" color="secondary" [(ngModel)]="preferences.interests[category.id]" (ionChange)="updatePreferences(item)"></ion-toggle>
+        </ion-item>
+      </ion-list>
+
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header class="transparent" no-border-bottom>
+
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ card.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div #pleaseConnect id="please-connect"></div>
+
+  <ion-card style="margin-top:0">
+    <img src="{{ card.image }}" *ngIf="card.image != ''">
+  <!--
+    <ion-card-header>
+      {{ card.name }}
+    </ion-card-header>
+  -->
+    <ion-card-content>
+      <div *ngIf="card.content == ''">{{ card.description }}</div>
+      <div [innerHTML]="card.content" *ngIf="card.content != ''"></div>
+    </ion-card-content>
+
+    <div #map id="map" style="width:100%;height:240px; background-color: #e5e5e5"></div>
+
+    <ion-row no-padding *ngIf="card_loading === false">
+      <ion-col>
+        <button ion-button clear small color="danger" icon-left (click)="favoriteCard()" *ngIf="favorite !== true">
+          <ion-icon name="heart-outline"></ion-icon>
+          {{ 'FAVORITE' | translate }}
+        </button>
+        <button ion-button clear small color="danger" icon-left (click)="unfavoriteCard()" *ngIf="favorite === true">
+          <ion-icon name="heart"></ion-icon>
+          {{ 'FAVORITE' | translate }}
+        </button>
+      </ion-col>
+      <!--
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name="navigate"></ion-icon>
+          Route
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name="share"></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    -->
+    </ion-row>
+  </ion-card>
+
+</ion-content>

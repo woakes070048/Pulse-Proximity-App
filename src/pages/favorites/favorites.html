@@ -1,0 +1,40 @@
+<ion-header class="transparent" no-border-bottom>
+
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'FAVORITES' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="loadFavs($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let card of cards">
+      <ion-item text-wrap (click)="viewCard(card.sl)">
+        <ion-thumbnail item-left>
+          <img src="assets/images/cards/icon.png" *ngIf="card.icon == ''">
+          <img src="{{ card.icon }}" *ngIf="card.icon != ''">
+        </ion-thumbnail>
+        <h2>{{ card.name }}</h2>
+        <p>{{ card.description }}</p>
+        <button ion-button clear icon-only item-right>
+          <ion-icon name="arrow-forward" color="dark"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteFav(card.sl)">
+          <ion-icon name="trash"></ion-icon>
+          {{ 'DELETE' | translate }}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

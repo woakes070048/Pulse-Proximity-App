@@ -1,0 +1,44 @@
+<ion-header class="transparent" no-border-bottom>
+
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'NEARBY' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="loadCards($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item text-wrap *ngFor="let card of cards" (click)="viewCard(card.sl)">
+      <ion-thumbnail item-left>
+        <img src="assets/images/cards/icon.png" *ngIf="card.icon == ''">
+        <img src="{{ card.icon }}" *ngIf="card.icon != ''">
+      </ion-thumbnail>
+      <h2>{{ card.name }}</h2>
+      <p>{{ card.description }}</p>
+      <button ion-button clear icon-only item-right>
+        <ion-icon name="arrow-forward" color="dark"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="scroll_finished === true">
+    <ion-card>
+      <ion-card-header text-center>
+        {{ 'END_OF_LIST' | translate }}
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="loadMoreCards($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
