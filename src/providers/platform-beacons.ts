@@ -189,7 +189,7 @@ export class PlatformBeacons {
 									can_trigger_scenario = parseInt(result.rows.item(0).can_trigger_scenario);
 									previous_proximity = result.rows.item(0).current_proximity;
 									previous_update = result.rows.item(0).updated;
-									previous_update = previous_update + 5;
+									previous_update = previous_update + 5000;
 								}
 
 								if (result.rows.length > 0 && previous_proximity != current_proximity && Date.now() >= previous_update) {
@@ -282,7 +282,7 @@ export class PlatformBeacons {
 						can_trigger_scenario = parseInt(result.rows.item(0).can_trigger_scenario);
 						previous_state = result.rows.item(0).state;
 						previous_update = result.rows.item(0).updated;
-						previous_update = previous_update + 5;
+						previous_update = previous_update + 5000;
 					}
 
 					if (result.rows.length > 0 && previous_state != current_state && Date.now() >= previous_update) {
@@ -363,7 +363,7 @@ export class PlatformBeacons {
 						can_trigger_scenario = parseInt(result.rows.item(0).can_trigger_scenario);
 						previous_state = result.rows.item(0).state;
 						previous_update = result.rows.item(0).updated;
-						previous_update = previous_update + 5;
+						previous_update = previous_update + 5000;
 					}
 
 					if (result.rows.length > 0 && previous_state != current_state && Date.now() >= previous_update) {
