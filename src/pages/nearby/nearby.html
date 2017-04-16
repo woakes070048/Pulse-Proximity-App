@@ -18,8 +18,8 @@
   <ion-list>
     <ion-item text-wrap *ngFor="let card of cards" (click)="viewCard(card.sl)">
       <ion-thumbnail item-left>
-        <img src="assets/images/cards/icon.png" *ngIf="card.icon == ''">
-        <img src="{{ card.icon }}" *ngIf="card.icon != ''">
+        <img src="assets/images/cards/icon.png" *ngIf="card.icon == null">
+        <img src="{{ card.icon }}" *ngIf="card.icon != null">
       </ion-thumbnail>
       <h2>{{ card.name }}</h2>
       <p>{{ card.description }}</p>
