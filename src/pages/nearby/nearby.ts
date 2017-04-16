@@ -68,7 +68,7 @@ export class NearbyPage {
     .then((location: any) => {
       this.location = location;
       let qs = 'lang=' + this.translate.currentLang + '&token=' + AppConfig.data.api_token[0] + '&lat=' + this.location.latitude + '&lng=' + this.location.longitude + '&acc=' + Math.round(this.location.accuracy) + '&p=' + this.page + '&c=' + this.interests;
-      console.log(qs);
+      console.log(AppConfig.data.platform_url + '/api/v1/remote/cards?' + qs);
 
       this.http.get(AppConfig.data.platform_url + '/api/v1/remote/cards?' + qs)
       .timeout(10000)
@@ -77,6 +77,7 @@ export class NearbyPage {
       .subscribe(data => {
         console.log(data);
         this.cards = data;
+
         this.loader.dismiss();
         if (refresher !== false) {
           refresher.complete();
