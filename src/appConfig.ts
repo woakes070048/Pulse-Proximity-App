@@ -6,7 +6,7 @@ export let data = {
    * ---------------------------------------------------
    */
 
-  "platform_url" : "https://example.com",
+  "platform_url" : "https://pulse.madewithpepper.com",
 
   /*
    * ---------------------------------------------------
@@ -15,7 +15,7 @@ export let data = {
    * ---------------------------------------------------
    */
 
-  "api_token": [""],
+  "api_token": ["MO8KeFqpyAjqSfJkpQ9bxzKrN0HGzVXsGqIaPI23MkE1b37opDhg0yGjyJVE"],
 
   /*
    * ---------------------------------------------------
