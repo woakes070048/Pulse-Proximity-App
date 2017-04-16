@@ -14,15 +14,11 @@
   <div #pleaseConnect id="please-connect"></div>
 
   <ion-card style="margin-top:0">
-    <img src="{{ card.image }}" *ngIf="card.image != ''">
-  <!--
-    <ion-card-header>
-      {{ card.name }}
-    </ion-card-header>
-  -->
+    <img src="{{ card.image }}" *ngIf="card.image != null">
+
     <ion-card-content>
-      <div *ngIf="card.content == ''">{{ card.description }}</div>
-      <div [innerHTML]="card.content" *ngIf="card.content != ''"></div>
+      <div *ngIf="card.content == null">{{ card.description }}</div>
+      <div [innerHTML]="card.content" *ngIf="card.content != null"></div>
     </ion-card-content>
 
     <div #map id="map" style="width:100%;height:240px; background-color: #e5e5e5"></div>
